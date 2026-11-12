@@ -1,0 +1,14 @@
+{
+  "name": "atlas-ui-css-architecture-rescue",
+  "private": true,
+  "type": "module",
+  "version": "0.6.0",
+  "description": "Advanced CSS architecture lab; intentionally broken baseline",
+  "scripts": {
+    "dev": "node server.mjs",
+    "test": "node --test tests/architecture.test.mjs",
+    "test:e2e": "playwright test",
+    "test:all": "npm test && npm run test:e2e"
+  },
+  "engines": { "node": ">=18" }
+}

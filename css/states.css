@@ -1,0 +1,14 @@
+/* INTERACTION STATES: intentionally incomplete and in conflict with base. */
+.ui-button:hover { transform: translateY(-1px); }
+.ui-button--primary:hover { background: var(--color-accent-hover); }
+.ui-button--secondary:hover, .ui-button--ghost:hover { background: var(--color-surface-alt); }
+.ui-button--danger:hover { background: #971d2a; }
+.ui-button:focus { outline: none; } /* BUG: removes visible keyboard focus */
+.ui-button:active { transform: translateY(0); }
+.ui-button:disabled { opacity: .45; pointer-events: none; }
+.ui-field:has(input:invalid) input { border-color: #b42336; background: #fff0f2; } /* BUG: premature invalid state */
+.ui-field:has(input:invalid) .ui-field__hint { color: #b42336; }
+.is-danger { background: #c12236; color: #ffffff; } /* BUG: global class conflicts with tags and alerts */
+:is(.ui-card, #workbench) .ui-tag { padding-inline: 1rem; } /* BUG: :is() inherits high specificity from ID */
+.ui-tag:hover { filter: brightness(.94); cursor: pointer; } /* BUG: tag has no action */
+.ui-alert { transition: background-color 240ms, color 240ms; }

@@ -1,0 +1,15 @@
+Компонент;Вариант;Состояние;Тема;Ширина_px;Ожидаемое поведение;Факт_до;Факт_после;Статус_OK_FAIL;Доказательство
+button;primary;default;light;1440;;;;;
+button;primary;focus-visible;dark;375;;;;;
+button;danger;hover;light;768;;;;;
+button;secondary;disabled;dark;320;;;;;
+field;email;untouched-invalid;light;1440;;;;;
+field;email;invalid-after-blur;dark;375;;;;;
+card;featured;long-text;light;320;;;;;
+card;default;nested-alert;dark;375;;;;;
+tag;danger;static;light;375;;;;;
+alert;warning;dark-contrast;dark;375;;;;;
+switch;enabled;keyboard-space;light;375;;;;;
+switch;disabled;tab-skip;dark;375;;;;;
+dialog;open;modal-focus;light;1024;;;;;
+dialog;closed;escape-focus-return;dark;375;;;;;

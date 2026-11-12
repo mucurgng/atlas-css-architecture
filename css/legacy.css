@@ -1,0 +1,9 @@
+/* VENDOR STYLESHEET — inherited from a contractor; cannot be deleted. */
+button { border-radius: 0; }
+#workbench .ui-button { background: #2939a8; padding: .45rem .65rem; }
+#workbench .ui-button.is-danger { background: #a41e24 !important; }
+.is-danger { color: #fff; }
+.ui-card p { font-size: .69rem; }
+input { outline: none; }
+.legacy-widget { font-family: Georgia, serif; border: 2px dashed #8492ac; }
+.legacy-action { border: 0; background: #243b6b; color: white; padding: .55rem .9rem; font: inherit; }
