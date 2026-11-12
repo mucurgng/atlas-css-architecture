@@ -1,0 +1,115 @@
+
+Running 6 tests using 1 worker
+
+  x  1 tests\browser\ui.spec.js:3:1 › native dialog is truly modal and Escape restores focus (1.9s)
+  x  2 tests\browser\ui.spec.js:15:1 › switch is keyboard reachable and Space toggles it (5.2s)
+  x  3 tests\browser\ui.spec.js:24:1 › field does not display error before user interacts (256ms)
+  x  4 tests\browser\ui.spec.js:35:1 › no horizontal viewport overflow at 320, 375, 768, 1024, 1440, 1920 (217ms)
+  x  5 tests\browser\ui.spec.js:44:1 › primary button uses theme tokens (5.2s)
+  ok 6 tests\browser\ui.spec.js:52:1 › alert is dismissible and restore action works (618ms)
+
+
+  1) tests\browser\ui.spec.js:3:1 › native dialog is truly modal and Escape restores focus ─────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+       7 |   const dialog = page.locator('#settings-dialog');
+       8 |   await expect(dialog).toBeVisible();
+    >  9 |   expect(await dialog.evaluate((node) => node.matches(':modal'))).toBe(true);
+         |                                                                   ^
+      10 |   await page.keyboard.press('Escape');
+      11 |   await expect(dialog).toBeHidden();
+      12 |   await expect(trigger).toBeFocused();
+
+    Error Context: test-results\ui-native-dialog-is-truly-modal-and-Escape-restores-focus\error-context.md
+
+  2) tests\browser\ui.spec.js:15:1 › switch is keyboard reachable and Space toggles it ─────────────
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  locator('#switch-autosave')
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" locator('#switch-autosave') with timeout 5000ms
+      - waiting for locator('#switch-autosave')
+        14 × locator resolved to <input type="checkbox" id="switch-autosave"/>
+           - unexpected value "inactive"
+
+
+      17 |   const control = page.locator('#switch-autosave');
+      18 |   await control.focus();
+    > 19 |   await expect(control).toBeFocused();
+         |                         ^
+      20 |   await page.keyboard.press('Space');
+      21 |   await expect(control).toBeChecked();
+      22 | });
+
+    Error Context: test-results\ui-switch-is-keyboard-reachable-and-Space-toggles-it\error-context.md
+
+  3) tests\browser\ui.spec.js:24:1 › field does not display error before user interacts ────────────
+
+    Error: expect(received).not.toBe(expected) // Object.is equality
+
+    Expected: not "rgb(180, 35, 54)"
+
+      30 |   await expect(field).toHaveAttribute('aria-invalid', 'true');
+      31 |   const borderColorAfter = await field.evaluate(el => getComputedStyle(el).borderColor);
+    > 32 |   expect(borderColorAfter).not.toBe(borderColorBefore);
+         |                                ^
+      33 | });
+      34 |
+      35 | test('no horizontal viewport overflow at 320, 375, 768, 1024, 1440, 1920', async ({ page }) => {
+
+    Error Context: test-results\ui-field-does-not-display-error-before-user-interacts\error-context.md
+
+  4) tests\browser\ui.spec.js:35:1 › no horizontal viewport overflow at 320, 375, 768, 1024, 1440, 1920 
+
+    Error: Overflow at 320px
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: false
+    Received: true
+
+      38 |     await page.goto('/');
+      39 |     const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+    > 40 |     expect(overflow, `Overflow at ${width}px`).toBe(false);
+         |                                                ^
+      41 |   }
+      42 | });
+      43 |
+
+    Error Context: test-results\ui-no-horizontal-viewport--9ebb3--320-375-768-1024-1440-1920\error-context.md
+
+  5) tests\browser\ui.spec.js:44:1 › primary button uses theme tokens ──────────────────────────────
+
+    Error: expect(received).not.toBe(expected) // Object.is equality
+
+    Expected: not "rgb(41, 57, 168)"
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      47 |   const light = await button.evaluate(el => getComputedStyle(el).backgroundColor);
+      48 |   await page.locator('#theme-toggle').click();
+    > 49 |   await expect.poll(() => button.evaluate(el => getComputedStyle(el).backgroundColor)).not.toBe(light);
+         |                                                                                            ^
+      50 | });
+      51 |
+      52 | test('alert is dismissible and restore action works', async ({ page }) => {
+
+    Error Context: test-results\ui-primary-button-uses-theme-tokens\error-context.md
+
+  5 failed
+    tests\browser\ui.spec.js:3:1 › native dialog is truly modal and Escape restores focus ──────────
+    tests\browser\ui.spec.js:15:1 › switch is keyboard reachable and Space toggles it ──────────────
+    tests\browser\ui.spec.js:24:1 › field does not display error before user interacts ─────────────
+    tests\browser\ui.spec.js:35:1 › no horizontal viewport overflow at 320, 375, 768, 1024, 1440, 1920 
+    tests\browser\ui.spec.js:44:1 › primary button uses theme tokens ───────────────────────────────
+  1 passed (24.0s)

@@ -1,0 +1,8 @@
+/* RESET: нормализация браузерных значений.
+   Только :where() — вес 0-0-0, поэтому любое правило из следующих слоёв легко его переопределит. */
+:where(*, *::before, *::after) { box-sizing: border-box; }
+:where(body) { margin: 0; }
+:where(h1, h2, h3, p) { margin-block-start: 0; }
+:where(button, input, textarea, select) { font: inherit; }
+:where(button) { cursor: pointer; }
+:where(a) { color: inherit; }
