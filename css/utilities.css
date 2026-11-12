@@ -1,6 +1,3 @@
-/* Small, explicit utilities only; do not turn this into a second component layer. */
+/* Small, explicit utilities only; do not turn this into a second component layer.
+   Раскладка шапки и hero для телефона перенесена в base.css: это не утилиты, а каркас страницы. */
 .u-visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-@media (max-width: 440px) {
-  .site-header__actions .ui-button { width: 100%; }
-  .hero__actions .ui-button { width: 100%; }
-}

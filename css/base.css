@@ -1,20 +1,19 @@
-:where(*, *::before, *::after) { box-sizing: border-box; }
+/* BASE: типографика страницы, каркас сайта и раскладка стенда.
+   Здесь нет стилей компонентов ui-*: только страница и контейнеры, в которые компоненты кладутся. */
 :where(html) { scroll-behavior: smooth; }
-:where(body) { margin: 0; font: 400 16px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif; background: var(--color-canvas); color: var(--color-ink); }
-:where(button, input, textarea) { font: inherit; }
-:where(button) { cursor: pointer; }
-:where(a) { color: inherit; }
-:where(h1, h2, h3, p) { margin-block-start: 0; }
+:where(body) { font: 400 16px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif; background: var(--color-canvas); color: var(--color-ink); }
 :where(h2) { line-height: 1.2; }
-:where(:focus-visible) { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+:where(:focus-visible) { outline: 3px solid var(--color-focus); outline-offset: 3px; } /* запасной фокус для всего, у чего нет своего */
 :where([hidden]) { display: none; }
+@media (prefers-reduced-motion: reduce) { :where(html) { scroll-behavior: auto; } }
+
 .skip-link { position: absolute; left: 1rem; top: -5rem; z-index: 200; padding: .7rem; background: var(--color-surface); }
 .skip-link:focus { top: 1rem; }
 .shell { width: min(100% - 2.5rem, 1200px); margin-inline: auto; }
 .site-header { background: var(--color-surface); border-bottom: 1px solid var(--color-border); }
 .site-header__content { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 5rem; }
 .brand { display: inline-flex; align-items: center; text-decoration: none; gap: .6rem; line-height: 1.1; font-size: 1.1rem; font-weight: 800; letter-spacing: .02em; }
-.brand__mark { display: grid; place-items: center; width: 2.45rem; height: 2.45rem; border-radius: .7rem; color: white; background: #3158d2; }
+.brand__mark { display: grid; place-items: center; width: 2.45rem; height: 2.45rem; border-radius: .7rem; color: var(--color-accent-ink); background: var(--color-accent); }
 .brand small { display: block; font-size: .65rem; font-weight: 500; color: var(--color-muted); letter-spacing: .08em; margin-top: .25rem; }
 .nav { display: flex; flex-wrap: wrap; gap: 1.5rem; font-size: .9rem; color: var(--color-muted); }
 .nav a { text-decoration: none; }
@@ -29,7 +28,7 @@
 .hero__panel { padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); background: var(--color-surface); }
 .hero__signal { font-size: 4.9rem; line-height: 1.1; font-weight: 900; letter-spacing: -.09em; margin: 1rem 0; }
 .hero__signal b { color: var(--color-accent); }
-.metric-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; border-block: 1px solid var(--color-border); padding-block: 1rem; }
+.metric-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; border-block: 1px solid var(--color-border); padding-block: 1rem; }
 .metric-grid strong { display: block; font-size: 1.7rem; }
 .metric-grid small { color: var(--color-muted); font-size: .68rem; line-height: 1.3; display: block; }
 .hero__panel > p { font-size: .78rem; color: var(--color-muted); margin: 1rem 0 0; }
@@ -49,17 +48,54 @@
 .sample-row { display: flex; align-items: center; flex-wrap: wrap; gap: .8rem; margin-bottom: .7rem; }
 .sample-row:last-child { margin-bottom: 0; }
 .mini-note { color: var(--color-muted); font-size: .83rem; margin: .7rem 0 0; }
+
+/* Раскладка стенда: сетки и стопки, в которые кладутся компоненты (раньше лежали в components.css). */
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.form-grid > .ui-field--full, .form-grid__actions { grid-column: 1 / -1; }
+.form-grid__actions { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+.card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.alerts-stack { display: grid; gap: .7rem; margin-bottom: 1.1rem; }
+.settings-list { display: grid; border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; }
+
 .incidents { margin-block: 3.3rem; }
 .incident-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
 .incident-grid article { border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1rem; background: var(--color-surface); }
 .incident-grid b { color: var(--color-accent); font-size: .75rem; }
 .incident-grid h3 { font-size: 1rem; line-height: 1.35; margin: .5rem 0; }
 .incident-grid p { color: var(--color-muted); font-size: .82rem; margin: 0; }
+
+/* Рамка вокруг чужого виджета. Внутренний вид виджета — в legacy.css; цвета виджета не зависят от темы,
+   чтобы он оставался визуально отделённым от библиотеки. */
 .legacy-zone { padding: 2rem; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); margin-bottom: 3.5rem; }
 .legacy-zone > p { color: var(--color-muted); }
 .legacy-widget { padding: 1.1rem; background: #edf1f7; color: #1d2b3e; border: 1px solid #bdc6d3; max-width: 32rem; }
 .legacy-widget h3 { margin: 0; }
 .legacy-widget p { font-size: .86rem; }
 .site-footer { padding-block: 1.5rem; border-top: 1px solid var(--color-border); color: var(--color-muted); font-size: .78rem; }
-@media (max-width: 960px) { .nav { display: none; } .app-layout { grid-template-columns: minmax(0, 1fr); } .sidebar { position: static; } .sidebar nav { grid-template-columns: repeat(4, 1fr); } .hero { grid-template-columns: 1fr; } .incident-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 620px) { .shell { width: min(100% - 1.2rem, 1200px); } .site-header__content { flex-wrap: wrap; padding-block: .8rem; } .site-header__actions { width: 100%; } .hero { padding-block: 2rem; } .sidebar nav { grid-template-columns: repeat(2, 1fr); } .lab-section { padding: 1.1rem; } .incident-grid { grid-template-columns: 1fr; } .metric-grid { gap: .25rem; } }
+
+@media (max-width: 960px) {
+  .nav { display: none; }
+  .app-layout { grid-template-columns: minmax(0, 1fr); }
+  .sidebar { position: static; }
+  .sidebar nav { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .incident-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) { .card-grid, .form-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 620px) {
+  .shell { width: min(100% - 1.2rem, 1200px); }
+  .site-header__content { flex-wrap: wrap; padding-block: .8rem; }
+  .site-header__actions { width: 100%; }
+  .hero { padding-block: 2rem; }
+  .sidebar nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lab-section { padding: 1.1rem; }
+  .legacy-zone { padding: 1.1rem; }
+  .incident-grid { grid-template-columns: minmax(0, 1fr); }
+  .metric-grid { gap: .25rem; }
+}
+/* Раскладка шапки и hero на телефоне (раньше лежало в utilities.css).
+   Родитель управляет только внешней геометрией кнопки (flex), но не её видом. */
+@media (max-width: 440px) {
+  .site-header__actions > .ui-button { flex: 1 1 0; }
+  .hero__actions > .ui-button { flex: 1 1 100%; }
+}
