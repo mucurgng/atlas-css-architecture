@@ -1,9 +1,13 @@
-/* VENDOR STYLESHEET — inherited from a contractor; cannot be deleted. */
-button { border-radius: 0; }
-#workbench .ui-button { background: #2939a8; padding: .45rem .65rem; }
-#workbench .ui-button.is-danger { background: #a41e24 !important; }
-.is-danger { color: #fff; }
-.ui-card p { font-size: .69rem; }
-input { outline: none; }
+/* VENDOR STYLESHEET — inherited from a contractor; cannot be deleted.
+   Файл подключён в слой legacy (см. app.css). Виджет подрядчика и его вид сохранены.
+   Изменено только то, что выходило за границы виджета:
+   - селекторы по тегам button и input, по ID рабочей области и по классам ui-card и ui-button
+     ограничены корнем виджета .legacy-widget;
+   - important-правило для опасной кнопки удалено: в слоях оно стало бы самым сильным
+     объявлением во всём проекте (для important порядок слоёв обратный);
+   - глобальный служебный класс is-danger ограничен виджетом;
+   - сброс outline у полей убран: он лишал клавиатурного фокуса всю страницу. */
 .legacy-widget { font-family: Georgia, serif; border: 2px dashed #8492ac; }
+.legacy-widget button { border-radius: 0; }
+.legacy-widget .is-danger { color: #fff; }
 .legacy-action { border: 0; background: #243b6b; color: white; padding: .55rem .9rem; font: inherit; }

@@ -1,48 +1,68 @@
+/* TOKENS: семантические переменные. Имя токена описывает роль, а не цвет.
+   Компоненты читают только эти роли, поэтому тема меняется здесь, без правок в компонентах.
+   Все цветовые значения проекта (кроме чужого виджета) живут только в этом файле. */
 :root {
+  color-scheme: light;
   --color-canvas: #f3f5fb;
   --color-surface: #ffffff;
   --color-surface-alt: #f8f9ff;
   --color-ink: #18233f;
   --color-muted: #56647d;
   --color-border: #d5dbea;
+  --color-border-strong: #7d889f;    /* граница полей и выключенный трек: контраст не ниже 3:1 */
   --color-accent: #3659d9;
   --color-accent-hover: #2344be;
   --color-accent-ink: #ffffff;
-  --color-focus: #e8791a;
+  --color-focus: #c2570c;            /* было #e8791a: 2,9:1 к белому, стало 4,5:1 */
   --color-danger: #bb283a;
   --color-danger-bg: #fff0f2;
+  --color-danger-solid: #b42336;     /* заливка опасной кнопки */
+  --color-danger-solid-hover: #971d2a;
+  --color-on-danger: #ffffff;
   --color-success: #1b7850;
   --color-success-bg: #e8f9f0;
   --color-warning: #855014;
   --color-warning-bg: #fff5dd;
   --color-info: #1b6094;
   --color-info-bg: #edf6ff;
+  --color-switch-thumb: #ffffff;
+  --color-backdrop: rgb(10 17 40 / .65);
   --space-1: .25rem; --space-2: .5rem; --space-3: .75rem;
   --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem;
   --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem;
-  --radius-sm: .45rem; --radius-md: .75rem; --radius-lg: 1.1rem;
+  --radius-sm: .45rem; --radius-md: .75rem; --radius-lg: 1.1rem; --radius-pill: 999px;
   --shadow-card: 0 15px 45px rgba(30, 42, 87, .08);
+  --shadow-dialog: 0 24px 90px rgba(8, 15, 45, .28);
   --control-height: 2.75rem;
   --motion-fast: 160ms;
+  --motion-theme: 240ms;
 }
 :root[data-theme='dark'] {
+  color-scheme: dark;
   --color-canvas: #10182b;
   --color-surface: #18243d;
   --color-surface-alt: #202e4a;
   --color-ink: #eef3ff;
   --color-muted: #bcc8dc;
   --color-border: #3d4b66;
+  --color-border-strong: #6f7d98;
   --color-accent: #90a6ff;
   --color-accent-hover: #b0befd;
   --color-accent-ink: #0c1834;
   --color-focus: #ffc27c;
   --color-danger: #ff9dab;
   --color-danger-bg: #572635;
+  --color-danger-solid: #ff9dab;
+  --color-danger-solid-hover: #ffb8c2;
+  --color-on-danger: #3b0d16;
   --color-success: #90e7ba;
   --color-success-bg: #174438;
   --color-warning: #ffe0a3;
   --color-warning-bg: #574223;
   --color-info: #a9d8ff;
   --color-info-bg: #193d5c;
+  --color-switch-thumb: #ffffff;
+  --color-backdrop: rgb(3 7 18 / .72);
   --shadow-card: 0 15px 45px rgba(0, 0, 0, .18);
+  --shadow-dialog: 0 24px 90px rgba(0, 0, 0, .55);
 }

@@ -1,0 +1,56 @@
+
+T1 Основная кнопка в #workbench — #buttons .ui-button--primary
+  background-color = rgb(54, 89, 217)
+       components   0-1-0        components.css:7   .ui-button  { background: transparent; }
+    >> components   0-1-0        components.css:17  .ui-button--primary  { background: var(--color-accent); }
+  padding-left = 20px
+    >> components   0-1-0        components.css:7   .ui-button  { padding: .65rem 1.25rem; }
+  border-top-left-radius = 12px
+    >> components   0-1-0        components.css:7   .ui-button  { border-radius: var(--radius-md); }
+
+T1b Вторичная кнопка в #workbench — #buttons .ui-button--secondary
+  background-color = rgb(255, 255, 255)
+       components   0-1-0        components.css:7   .ui-button  { background: transparent; }
+    >> components   0-1-0        components.css:18  .ui-button--secondary  { background: var(--color-surface); }
+  color = rgb(24, 35, 63)
+       components   0-1-0        components.css:7   .ui-button  { color: var(--color-ink); }
+    >> components   0-1-0        components.css:18  .ui-button--secondary  { color: var(--color-ink); }
+
+T1c Опасная кнопка — #buttons .ui-button--danger
+  background-color = rgb(180, 35, 54)
+       components   0-1-0        components.css:7   .ui-button  { background: transparent; }
+    >> components   0-1-0        components.css:20  .ui-button--danger  { background: var(--color-danger-solid); }
+
+T2 Опасная метка внутри карточки — #cards .ui-tag--danger
+  background-color = rgb(255, 240, 242)
+    >> components   0-1-0        components.css:56  .ui-tag--danger  { background: var(--color-danger-bg); }
+  color = rgb(187, 40, 58)
+    >> components   0-1-0        components.css:56  .ui-tag--danger  { color: var(--color-danger); }
+  padding-left = 10.4px
+    >> components   0-1-0        components.css:48  .ui-tag  { padding: .25rem .65rem; }
+
+T3 Поле email до взаимодействия — #user-email
+  border-top-color = rgb(125, 136, 159)
+    >> components   0-1-0        components.css:27  .ui-field__control  { border: 1px solid var(--color-border-strong); }
+  background-color = rgb(255, 255, 255)
+    >> components   0-1-0        components.css:27  .ui-field__control  { background: var(--color-surface); }
+
+T4 Текст вложенного уведомления в карточке — #cards .ui-alert p
+  font-size = 13.28px
+    >> components   0-1-0        components.css:74  .ui-alert__text  { font-size: .83rem; }
+  color = rgb(133, 80, 20)
+
+T5 Checkbox переключателя — #switch-autosave
+  display = block
+  position = absolute
+    >> components   0-1-1        components.css:88  .ui-switch input  { position: absolute; }
+
+T6 Кнопка в состоянии :focus-visible — #buttons .ui-button--secondary [focus,focus-visible]
+  outline-style = solid
+       base         0-0-0        base.css:6         :where(:focus-visible)  { outline: 3px solid var(--color-focus); }
+    >> states       0-2-0        states.css:12      .ui-button:focus-visible  { outline: 3px solid var(--color-focus); }
+
+T7 Поле имени в состоянии :focus-visible — #user-name [focus,focus-visible]
+  outline-style = solid
+       base         0-0-0        base.css:6         :where(:focus-visible)  { outline: 3px solid var(--color-focus); }
+    >> states       0-2-0        states.css:17      .ui-field__control:focus-visible  { outline: 3px solid var(--color-focus); }

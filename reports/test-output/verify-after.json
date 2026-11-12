@@ -1,0 +1,83 @@
+{
+ "light": {
+  "alertInfo": "6.11",
+  "alertSuccess": "5.00",
+  "alertWarning": "6.14",
+  "alertDanger": "5.46",
+  "tagSuccess": "5.00",
+  "tagWarning": "6.14",
+  "tagDanger": "5.46",
+  "tagNeutral": "5.69",
+  "btnPrimary": "5.85",
+  "btnDanger": "6.49",
+  "fieldBorder": "3.56",
+  "switchOff": "3.56",
+  "focusVsSurface": "4.50",
+  "cardText": "13.12px"
+ },
+ "dark": {
+  "alertInfo": "7.49",
+  "alertSuccess": "7.46",
+  "alertWarning": "7.44",
+  "alertDanger": "6.15",
+  "tagSuccess": "7.46",
+  "tagWarning": "7.44",
+  "tagDanger": "6.15",
+  "tagNeutral": "8.02",
+  "btnPrimary": "7.60",
+  "btnDanger": "8.50",
+  "fieldBorder": "3.73",
+  "switchOff": "3.73",
+  "focusVsSurface": "9.76",
+  "cardText": "13.12px"
+ },
+ "heights": [
+  34.390625,
+  44,
+  52,
+  44
+ ],
+ "submit": {
+  "name": "true",
+  "email": "true",
+  "focus": "user-name",
+  "status": "Исправьте поля: 2."
+ },
+ "valid": {
+  "email": "false",
+  "hint": "Мы отправим подтверждение на эту почту",
+  "border": "rgb(27, 120, 80)"
+ },
+ "dialogTab": "in,in,in,OUT:BODY,in,in",
+ "cancelFocus": true,
+ "switchTab": {
+  "afterFirstTab": "switch-autosave",
+  "afterSecondTab": "",
+  "shiftTabBack": "switch-autosave"
+ },
+ "alertKeyboard": {
+  "left": 3,
+  "focus": "Закрыть уведомление «Успешно»"
+ },
+ "tagCursor": "auto",
+ "legacy": {
+  "font": "Georgia, serif",
+  "actionRadius": "0px",
+  "libRadius": "12px"
+ },
+ "reduced": "0s",
+ "overflow": [
+  "light-320:320",
+  "light-375:375",
+  "light-768:768",
+  "light-1024:1024",
+  "light-1440:1440",
+  "light-1920:1920",
+  "dark-320:320",
+  "dark-375:375",
+  "dark-768:768",
+  "dark-1024:1024",
+  "dark-1440:1440",
+  "dark-1920:1920"
+ ]
+}

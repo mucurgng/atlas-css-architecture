@@ -1,47 +1,80 @@
 const root = document.documentElement;
+
+/* Тема: меняется только атрибут data-theme на html, цвета переключают токены (tokens.css). */
 const themeToggle = document.querySelector('#theme-toggle');
+function applyTheme(theme) {
+  root.dataset.theme = theme;
+  const toDark = theme !== 'dark';
+  themeToggle.querySelector('[data-theme-icon]').textContent = toDark ? '🌙' : '☀️';
+  themeToggle.lastChild.textContent = toDark ? ' Тёмная тема' : ' Светлая тема';
+}
+themeToggle.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+
+/* Диалог: только модальный режим. showModal() кладёт окно в верхний слой, делает фон inert,
+   закрывается по Escape и возвращает фокус на кнопку, которая его открыла. */
 const dialog = document.querySelector('#settings-dialog');
-
-function toggleTheme() {
-  const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-  root.dataset.theme = next;
-  themeToggle.setAttribute('aria-pressed', String(next === 'dark'));
-  themeToggle.textContent = next === 'dark' ? '☀️ Светлая тема' : '🌙 Сменить тему';
-}
-themeToggle.addEventListener('click', toggleTheme);
-
-// INCIDENT D08: the window is opened, but not in a modal state.
+let dialogTrigger = null;
 for (const trigger of document.querySelectorAll('#open-dialog, [data-open-dialog]')) {
-  trigger.addEventListener('click', () => dialog.show());
+  trigger.addEventListener('click', () => {
+    dialogTrigger = trigger;
+    dialog.showModal();
+  });
 }
+dialog.addEventListener('close', () => {
+  // Браузер возвращает фокус сам; это страховка на случай старого движка.
+  if (dialogTrigger && document.activeElement !== dialogTrigger) dialogTrigger.focus();
+  dialogTrigger = null;
+});
 
+/* Валидация: до взаимодействия ошибки нет. После blur или submit поле получает aria-invalid,
+   а подсказка (aria-describedby) объясняет, что исправить. CSS читает только aria-invalid. */
 const form = document.querySelector('#demo-form');
-for (const input of form.querySelectorAll('input[required]')) {
-  input.addEventListener('blur', () => input.setAttribute('aria-invalid', String(!input.checkValidity())));
+const requiredInputs = [...form.querySelectorAll('input[required]')];
+function setFieldState(input) {
+  const invalid = !input.checkValidity();
+  input.setAttribute('aria-invalid', String(invalid));
+  const hint = document.getElementById(input.getAttribute('aria-describedby'));
+  if (hint) {
+    hint.dataset.defaultText ??= hint.textContent;
+    hint.textContent = invalid ? input.dataset.error : hint.dataset.defaultText;
+  }
+  return invalid;
+}
+for (const input of requiredInputs) {
+  input.addEventListener('blur', () => setFieldState(input));
   input.addEventListener('input', () => {
-    if (input.hasAttribute('aria-invalid')) input.setAttribute('aria-invalid', String(!input.checkValidity()));
+    if (input.hasAttribute('aria-invalid')) setFieldState(input);
   });
 }
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  let hasErrors = false;
-  for (const input of form.querySelectorAll('input[required]')) {
-    const invalid = !input.checkValidity();
-    input.setAttribute('aria-invalid', String(invalid));
-    if (invalid) hasErrors = true;
-  }
-  document.querySelector('#form-feedback').textContent = hasErrors ? 'Исправьте поля формы.' : 'Данные прошли проверку.';
+  const invalidInputs = requiredInputs.filter((input) => setFieldState(input));
+  document.querySelector('#form-feedback').textContent = invalidInputs.length
+    ? `Исправьте поля: ${invalidInputs.length}.`
+    : 'Данные прошли проверку.';
+  invalidInputs[0]?.focus();
 });
 
+/* Уведомления: закрытие удаляет одно уведомление, а не контейнер; фокус не теряется. */
 const alerts = document.querySelector('.alerts-stack');
-const initialAlerts = alerts.innerHTML;
+const restoreButton = document.querySelector('#restore-alerts');
+const initialAlerts = [...alerts.children].map((node) => node.cloneNode(true));
 alerts.addEventListener('click', (event) => {
   const dismiss = event.target.closest('.ui-alert__dismiss');
-  if (dismiss) dismiss.closest('.ui-alert')?.remove();
+  if (!dismiss) return;
+  const alert = dismiss.closest('.ui-alert');
+  const neighbour = alert.nextElementSibling ?? alert.previousElementSibling;
+  alert.remove();
+  (neighbour?.querySelector('.ui-alert__dismiss') ?? restoreButton).focus();
 });
-document.querySelector('#restore-alerts').addEventListener('click', () => { alerts.innerHTML = initialAlerts; });
+restoreButton.addEventListener('click', () => {
+  alerts.replaceChildren(...initialAlerts.map((node) => node.cloneNode(true)));
+});
+
+/* Переключатели: состояние хранит сам checkbox, здесь только текстовая обратная связь. */
 for (const input of document.querySelectorAll('.ui-switch input')) {
   input.addEventListener('change', () => {
-    document.querySelector('#switch-feedback').textContent = `${input.closest('.ui-switch').querySelector('strong').textContent}: ${input.checked ? 'включено' : 'выключено'}`;
+    const label = input.closest('.ui-switch').querySelector('.ui-switch__label').textContent;
+    document.querySelector('#switch-feedback').textContent = `${label}: ${input.checked ? 'включено' : 'выключено'}`;
   });
 }

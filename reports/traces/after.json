@@ -1,0 +1,433 @@
+{
+  "label": "after",
+  "baseURL": "http://127.0.0.1:5173",
+  "date": "2026-11-12T05:59:30.104Z",
+  "traces": [
+    {
+      "id": "T1",
+      "title": "Основная кнопка в #workbench",
+      "selector": "#buttons .ui-button--primary",
+      "forced": [],
+      "props": [
+        {
+          "prop": "background-color",
+          "computed": "rgb(54, 89, 217)",
+          "winner": 8,
+          "candidates": [
+            {
+              "order": 7,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-button",
+              "matched": ".ui-button",
+              "specificity": "0-1-0",
+              "source": "components.css:7",
+              "declaration": "background: transparent;"
+            },
+            {
+              "order": 8,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-button--primary",
+              "matched": ".ui-button--primary",
+              "specificity": "0-1-0",
+              "source": "components.css:17",
+              "declaration": "background: var(--color-accent);"
+            }
+          ]
+        },
+        {
+          "prop": "padding-left",
+          "computed": "20px",
+          "winner": 7,
+          "candidates": [
+            {
+              "order": 7,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-button",
+              "matched": ".ui-button",
+              "specificity": "0-1-0",
+              "source": "components.css:7",
+              "declaration": "padding: .65rem 1.25rem;"
+            }
+          ]
+        },
+        {
+          "prop": "border-top-left-radius",
+          "computed": "12px",
+          "winner": 7,
+          "candidates": [
+            {
+              "order": 7,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-button",
+              "matched": ".ui-button",
+              "specificity": "0-1-0",
+              "source": "components.css:7",
+              "declaration": "border-radius: var(--radius-md);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T1b",
+      "title": "Вторичная кнопка в #workbench",
+      "selector": "#buttons .ui-button--secondary",
+      "forced": [],
+      "props": [
+        {
+          "prop": "background-color",
+          "computed": "rgb(255, 255, 255)",
+          "winner": 8,
+          "candidates": [
+            {
+              "order": 7,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-button",
+              "matched": ".ui-button",
+              "specificity": "0-1-0",
+              "source": "components.css:7",
+              "declaration": "background: transparent;"
+            },
+            {
+              "order": 8,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-button--secondary",
+              "matched": ".ui-button--secondary",
+              "specificity": "0-1-0",
+              "source": "components.css:18",
+              "declaration": "background: var(--color-surface);"
+            }
+          ]
+        },
+        {
+          "prop": "color",
+          "computed": "rgb(24, 35, 63)",
+          "winner": 8,
+          "candidates": [
+            {
+              "order": 7,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-button",
+              "matched": ".ui-button",
+              "specificity": "0-1-0",
+              "source": "components.css:7",
+              "declaration": "color: var(--color-ink);"
+            },
+            {
+              "order": 8,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-button--secondary",
+              "matched": ".ui-button--secondary",
+              "specificity": "0-1-0",
+              "source": "components.css:18",
+              "declaration": "color: var(--color-ink);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T1c",
+      "title": "Опасная кнопка",
+      "selector": "#buttons .ui-button--danger",
+      "forced": [],
+      "props": [
+        {
+          "prop": "background-color",
+          "computed": "rgb(180, 35, 54)",
+          "winner": 8,
+          "candidates": [
+            {
+              "order": 7,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-button",
+              "matched": ".ui-button",
+              "specificity": "0-1-0",
+              "source": "components.css:7",
+              "declaration": "background: transparent;"
+            },
+            {
+              "order": 8,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-button--danger",
+              "matched": ".ui-button--danger",
+              "specificity": "0-1-0",
+              "source": "components.css:20",
+              "declaration": "background: var(--color-danger-solid);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T2",
+      "title": "Опасная метка внутри карточки",
+      "selector": "#cards .ui-tag--danger",
+      "forced": [],
+      "props": [
+        {
+          "prop": "background-color",
+          "computed": "rgb(255, 240, 242)",
+          "winner": 2,
+          "candidates": [
+            {
+              "order": 2,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-tag--danger",
+              "matched": ".ui-tag--danger",
+              "specificity": "0-1-0",
+              "source": "components.css:56",
+              "declaration": "background: var(--color-danger-bg);"
+            }
+          ]
+        },
+        {
+          "prop": "color",
+          "computed": "rgb(187, 40, 58)",
+          "winner": 2,
+          "candidates": [
+            {
+              "order": 2,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-tag--danger",
+              "matched": ".ui-tag--danger",
+              "specificity": "0-1-0",
+              "source": "components.css:56",
+              "declaration": "color: var(--color-danger);"
+            }
+          ]
+        },
+        {
+          "prop": "padding-left",
+          "computed": "10.4px",
+          "winner": 1,
+          "candidates": [
+            {
+              "order": 1,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-tag",
+              "matched": ".ui-tag",
+              "specificity": "0-1-0",
+              "source": "components.css:48",
+              "declaration": "padding: .25rem .65rem;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T3",
+      "title": "Поле email до взаимодействия",
+      "selector": "#user-email",
+      "forced": [],
+      "props": [
+        {
+          "prop": "border-top-color",
+          "computed": "rgb(125, 136, 159)",
+          "winner": 9,
+          "candidates": [
+            {
+              "order": 9,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-field__control",
+              "matched": ".ui-field__control",
+              "specificity": "0-1-0",
+              "source": "components.css:27",
+              "declaration": "border: 1px solid var(--color-border-strong);"
+            }
+          ]
+        },
+        {
+          "prop": "background-color",
+          "computed": "rgb(255, 255, 255)",
+          "winner": 9,
+          "candidates": [
+            {
+              "order": 9,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-field__control",
+              "matched": ".ui-field__control",
+              "specificity": "0-1-0",
+              "source": "components.css:27",
+              "declaration": "background: var(--color-surface);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T4",
+      "title": "Текст вложенного уведомления в карточке",
+      "selector": "#cards .ui-alert p",
+      "forced": [],
+      "props": [
+        {
+          "prop": "font-size",
+          "computed": "13.28px",
+          "winner": 4,
+          "candidates": [
+            {
+              "order": 4,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-alert__text",
+              "matched": ".ui-alert__text",
+              "specificity": "0-1-0",
+              "source": "components.css:74",
+              "declaration": "font-size: .83rem;"
+            }
+          ]
+        },
+        {
+          "prop": "color",
+          "computed": "rgb(133, 80, 20)",
+          "winner": null,
+          "candidates": []
+        }
+      ]
+    },
+    {
+      "id": "T5",
+      "title": "Checkbox переключателя",
+      "selector": "#switch-autosave",
+      "forced": [],
+      "props": [
+        {
+          "prop": "display",
+          "computed": "block",
+          "winner": null,
+          "candidates": []
+        },
+        {
+          "prop": "position",
+          "computed": "absolute",
+          "winner": 11,
+          "candidates": [
+            {
+              "order": 11,
+              "origin": "regular",
+              "important": false,
+              "layer": "components",
+              "selector": ".ui-switch input",
+              "matched": ".ui-switch input",
+              "specificity": "0-1-1",
+              "source": "components.css:88",
+              "declaration": "position: absolute;"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T6",
+      "title": "Кнопка в состоянии :focus-visible",
+      "selector": "#buttons .ui-button--secondary",
+      "forced": [
+        "focus",
+        "focus-visible"
+      ],
+      "props": [
+        {
+          "prop": "outline-style",
+          "computed": "solid",
+          "winner": 11,
+          "candidates": [
+            {
+              "order": 8,
+              "origin": "regular",
+              "important": false,
+              "layer": "base",
+              "selector": ":where(:focus-visible)",
+              "matched": ":where(:focus-visible)",
+              "specificity": "0-0-0",
+              "source": "base.css:6",
+              "declaration": "outline: 3px solid var(--color-focus);"
+            },
+            {
+              "order": 11,
+              "origin": "regular",
+              "important": false,
+              "layer": "states",
+              "selector": ".ui-button:focus-visible",
+              "matched": ".ui-button:focus-visible",
+              "specificity": "0-2-0",
+              "source": "states.css:12",
+              "declaration": "outline: 3px solid var(--color-focus);"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T7",
+      "title": "Поле имени в состоянии :focus-visible",
+      "selector": "#user-name",
+      "forced": [
+        "focus",
+        "focus-visible"
+      ],
+      "props": [
+        {
+          "prop": "outline-style",
+          "computed": "solid",
+          "winner": 13,
+          "candidates": [
+            {
+              "order": 11,
+              "origin": "regular",
+              "important": false,
+              "layer": "base",
+              "selector": ":where(:focus-visible)",
+              "matched": ":where(:focus-visible)",
+              "specificity": "0-0-0",
+              "source": "base.css:6",
+              "declaration": "outline: 3px solid var(--color-focus);"
+            },
+            {
+              "order": 13,
+              "origin": "regular",
+              "important": false,
+              "layer": "states",
+              "selector": ".ui-field__control:focus-visible",
+              "matched": ".ui-field__control:focus-visible",
+              "specificity": "0-2-0",
+              "source": "states.css:17",
+              "declaration": "outline: 3px solid var(--color-focus);"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

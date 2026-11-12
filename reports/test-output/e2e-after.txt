@@ -1,0 +1,11 @@
+
+Running 6 tests using 1 worker
+
+  ok 1 tests\browser\ui.spec.js:3:1 › native dialog is truly modal and Escape restores focus (618ms)
+  ok 2 tests\browser\ui.spec.js:15:1 › switch is keyboard reachable and Space toggles it (180ms)
+  ok 3 tests\browser\ui.spec.js:24:1 › field does not display error before user interacts (196ms)
+  ok 4 tests\browser\ui.spec.js:35:1 › no horizontal viewport overflow at 320, 375, 768, 1024, 1440, 1920 (273ms)
+  ok 5 tests\browser\ui.spec.js:44:1 › primary button uses theme tokens (335ms)
+  ok 6 tests\browser\ui.spec.js:52:1 › alert is dismissible and restore action works (228ms)
+
+  6 passed (3.3s)
