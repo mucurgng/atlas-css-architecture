@@ -1,15 +1,49 @@
 Компонент;Вариант;Состояние;Тема;Ширина_px;Ожидаемое поведение;Факт_до;Факт_после;Статус_OK_FAIL;Доказательство
-button;primary;default;light;1440;;;;;
-button;primary;focus-visible;dark;375;;;;;
-button;danger;hover;light;768;;;;;
-button;secondary;disabled;dark;320;;;;;
-field;email;untouched-invalid;light;1440;;;;;
-field;email;invalid-after-blur;dark;375;;;;;
-card;featured;long-text;light;320;;;;;
-card;default;nested-alert;dark;375;;;;;
-tag;danger;static;light;375;;;;;
-alert;warning;dark-contrast;dark;375;;;;;
-switch;enabled;keyboard-space;light;375;;;;;
-switch;disabled;tab-skip;dark;375;;;;;
-dialog;open;modal-focus;light;1024;;;;;
-dialog;closed;escape-focus-return;dark;375;;;;;
+button;primary;default;light;1440;Фон = --color-accent (rgb 54,89,217), скругление 12px;Фон rgb(41,57,168) и радиус 0 из legacy.css вне слоёв;Фон rgb(54,89,217), радиус 12px из слоя components;OK;traces T1, devtools/*_trace1_button.png
+button;primary;focus-visible;dark;375;Видимая обводка 3px цвета --color-focus;outline:none из states (.ui-button:focus);outline 3px solid из .ui-button:focus-visible;OK;trace T6, after_button_focus_dark.png
+button;danger;hover;light;768;Фон темнеет до --color-danger-solid-hover, метки не меняются;Фон закреплён important-правилом legacy (#a41e24), hover не виден;Фон rgb(151,29,42) из states;OK;trace T1c, states.css
+button;secondary;disabled;dark;320;Нативный disabled, opacity .5, cursor not-allowed, нет hover;pointer-events:none, курсор не меняется;opacity .5, cursor not-allowed, hover выключен :not(:disabled);OK;states.css, after_320_dark.png
+field;email;untouched-invalid;light;1440;До взаимодействия обычная рамка без ошибки;Красная рамка и розовый фон сразу после загрузки (:invalid);Рамка --color-border-strong, фон белый;OK;trace T3, e2e test 3
+field;email;invalid-after-blur;dark;375;После blur aria-invalid=true, рамка danger, подсказка объясняет ошибку;aria-invalid ставился, но вид не зависел от него;Рамка danger, текст «Введите адрес в формате name@company.ru»;OK;e2e test 3, after_fields_invalid_light.png
+card;featured;long-text;light;320;Длинный заголовок переносится, нет горизонтального скролла;Скролл: .ui-card min-width 22rem и input min-width 20rem;scrollWidth = 320, заголовок переносится;OK;e2e test 4, after_320_light.png
+card;default;nested-alert;dark;375;Текст уведомления в карточке остаётся 13.28px и цвета уведомления;11.04px и серый цвет из .ui-card p;13.28px, цвет --color-warning;OK;trace T4, after_375_dark.png
+tag;danger;static;light;375;Розовый фон, красный текст, курсор по умолчанию;Сплошной красный фон и белый текст от .is-danger, курсор pointer;Фон --color-danger-bg, текст --color-danger, без hover;OK;trace T2, after_375_light.png
+alert;warning;dark-contrast;dark;375;Текст читается на тёмном фоне (контраст не ниже 4,5:1);Текст #111827 на #574223 — почти не виден;Текст #ffe0a3 на #574223, контраст 7,44:1 (было 1,9:1);OK;after_375_dark.png, tokens.css
+switch;enabled;keyboard-space;light;375;Tab доходит до контрола, Space переключает;input display:none — Tab не доходит;Фокус на checkbox, Space включает;OK;e2e test 2, after_switch_focus_light.png
+switch;disabled;tab-skip;dark;375;Нативный disabled, Tab пропускает, вид приглушён;Не фокусируется (как и все переключатели);Пропускается Tab, opacity .45, cursor not-allowed;OK;ручная проверка Tab, states.css
+dialog;open;modal-focus;light;1024;Окно в верхнем слое, фон inert, :modal = true;show(): окно в потоке страницы, фон доступен;showModal(): :modal = true, фон затемнён;OK;e2e test 1, after_dialog_1440_light.png
+dialog;closed;escape-focus-return;dark;375;Escape закрывает, фокус на кнопку-инициатор;Escape не закрывает немодальное окно, фокус теряется;Закрывается, фокус на #open-dialog;OK;e2e test 1, after_dialog_375_dark.png
+button;secondary;default;light;1440;Вторичная кнопка белая с рамкой, отличается от primary;Все кнопки в #workbench одинаково синие;Фон rgb(255,255,255), рамка --color-border;OK;trace T1b, devtools/*_trace1_button.png
+button;ghost;default;dark;1440;Прозрачный фон, текст --color-ink;Синий фон из legacy;Прозрачный фон, светлый текст;OK;after_1440_dark.png
+button;primary;theme-switch;dark;1440;После смены темы фон = тёмный акцент #90a6ff;Фон не менялся (жёсткий hex и legacy);Фон rgb(144,166,255);OK;e2e test 5
+button;danger;default;dark;1440;Розовая заливка и тёмный текст в тёмной теме;Тёмно-красная заливка из legacy important;Фон #ff9dab, текст #3b0d16;OK;after_1440_dark.png
+button;sm/md/lg;default;light;1440;Три размера по высоте 34/44/52px, общая база;Размеры и padding перебиты legacy, радиус 0;Высоты 34,4/44/52px, радиус 12px;OK;after_1440_light.png
+button;primary;active;light;1440;При нажатии сдвиг 1px без изменения раскладки;Сдвиг через transform (без влияния на раскладку);transform translateY(1px), раскладка не меняется;OK;states.css
+button;primary;reduced-motion;light;1440;При prefers-reduced-motion нет переходов и сдвига;Режим не учитывался;transition none, transform none;OK;DevTools Rendering, states.css
+button;card-action;mobile-width;light;320;Кнопка в карточке не шире карточки;Карточка шире экрана;Кнопка внутри карточки, max-width 100%;OK;after_320_light.png
+button;header-actions;mobile-width;light;375;Кнопки шапки делят строку поровну;Делили через утилиту width:100%;flex 1 1 0 в base;OK;after_375_light.png
+field;name;untouched;dark;1440;Нет ошибки до взаимодействия, рамка видна (3:1);Красная рамка сразу;Рамка #6f7d98 на #18243d (3,73:1);OK;after_1440_dark.png
+field;name;focus-visible;light;1440;Видна обводка фокуса;outline:none из legacy (input);outline 3px solid из .ui-field__control:focus-visible;OK;trace T7
+field;email;valid-after-fix;light;1440;После исправления ошибка снимается, рамка зелёная;Ошибка зависела от :invalid, а не от действия;aria-invalid=false, рамка --color-success, подсказка возвращается;OK;ручная проверка ввода name@company.ru
+field;form;submit-empty;light;768;Submit без данных — ошибки у обоих полей, фокус на первое;Ошибки были видны и до submit;aria-invalid=true у двух полей, фокус на имя, статус «Исправьте поля: 2»;OK;ручная проверка Enter на кнопке
+field;textarea;default;light;320;Поле комментария не выходит за экран;min-width 20rem — выход за край;Ширина по сетке, без скролла;OK;e2e test 4
+card;standard;default;dark;1024;Фон --color-surface, тень и граница из токенов;Тема работала, но текст 11px из legacy;Цвета темы, текст 13.12px;OK;after_1024_dark.png
+card;featured;long-text;dark;375;Длинный заголовок переносится в тёмной теме;Горизонтальный скролл;Перенос, scrollWidth = 375;OK;e2e test 4, after_375_dark.png
+card;grid;two-columns;light;768;На 768 карточки в одну колонку без переполнения;Карточка 352px не помещалась в узкие треки;Одна колонка, треки minmax(0,1fr);OK;after_768_light.png
+card;nested-alert;tag-inside;light;1440;Опасная метка в карточке остаётся меткой;Выглядела как кнопка удаления (UX-141);Метка розовая, padding 10.4px;OK;trace T2
+tag;neutral;static;dark;1440;Нейтральная метка читается в тёмной теме;Читалась;Цвет --color-muted на --color-surface-alt;OK;after_1440_dark.png
+tag;success/warning;static;dark;768;Цвета ролей из токенов, читаются;Читались;Контраст 7,46 и 7,44;OK;after_768_dark.png
+tag;any;hover;light;1440;Нет hover и pointer: метка не кнопка;filter и cursor:pointer при наведении;Правило hover удалено;OK;states.css, tests 17
+tag;in-workbench;padding;light;1440;padding-inline 10.4px как у всех меток;16px из :is(.ui-card, #workbench) (вес 1-1-0);10.4px из .ui-tag;OK;trace T2
+alert;info/success/danger;default;light;1440;Цвет текста = цвет роли, фон и рамка из токенов;Текст #111827, danger — сплошной красный от .is-danger;Текст и рамка цвета роли;OK;after_1440_light.png
+alert;danger;dark-contrast;dark;1440;Текст #ff9dab на #572635 читается;Почти чёрный текст на тёмном фоне;Контраст 6,15:1;OK;after_1440_dark.png, verify-after.json
+alert;any;dismiss-restore;light;1440;Закрывается одно уведомление, восстановление возвращает 4;Работало;4 → 3 → 4, фокус на соседнюю кнопку;OK;e2e test 6
+alert;dismiss;keyboard;dark;375;Кнопка закрытия доступна с клавиатуры и имеет имя;Имя «Закрыть уведомление» без уточнения;Tab + Enter, имя «Закрыть уведомление «Информация»»;OK;ручная проверка
+switch;on;checked;dark;1440;Трек цвета --color-accent, бегунок справа;Работало мышью;checked из states;OK;after_1440_dark.png
+switch;off;contrast;light;1440;Выключенный трек заметен (3:1);Трек #adb7c6 — 2:1;Трек #7d889f — 3,56:1;OK;tokens.css, verify-after.json
+switch;enabled;shift-tab;light;1440;Shift+Tab возвращает фокус на предыдущий переключатель;Не фокусируется;Фокус переходит назад, обводка видна;OK;ручная проверка
+dialog;open;tab-inside;light;1440;Tab не выходит на элементы страницы, фон inert;Tab уходил на элементы страницы;Tab перебирает элементы окна и интерфейс браузера, страница недоступна;OK;verify-after.json (dialogTab), :modal
+dialog;open;cancel-button;dark;1024;Кнопка «Отмена» закрывает и возвращает фокус;Окно закрывалось, фокус терялся;Фокус на кнопке-инициаторе;OK;ручная проверка
+dialog;open;mobile;dark;320;Окно помещается на 320 без скролла по горизонтали;Окно шириной 92vw;width min(100% - 2rem, 30rem);OK;after_dialog_375_dark.png
+legacy;widget;isolation;light;1440;Виджет сохраняет свой вид и не меняет библиотеку;Виджет работал, но ломал кнопки и метки;Georgia, квадратная кнопка, библиотека не задета;OK;after_1440_light.png, test 18
+page;all;overflow;light/dark;320-1920;Нет горизонтального скролла на 6 ширинах;Скролл на 320 и 375;Нет на всех ширинах;OK;e2e test 4, 12 скриншотов after_*

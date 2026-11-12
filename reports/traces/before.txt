@@ -1,0 +1,69 @@
+
+T1 Основная кнопка в #workbench — #buttons .ui-button--primary
+  background-color = rgb(41, 57, 168)
+       components   0-1-0        components.css:4   .ui-button--primary  { background: #3659d9; }
+    >> (вне слоёв)  1-1-0        legacy.css:3       #workbench .ui-button  { background: #2939a8; }
+  padding-left = 10.4px
+       components   0-1-0        components.css:2   .ui-button  { padding: .65rem 1.1rem; }
+       components   0-1-0        components.css:3   .ui-button  { padding-inline: 1.25rem; }
+    >> (вне слоёв)  1-1-0        legacy.css:3       #workbench .ui-button  { padding: .45rem .65rem; }
+  border-top-left-radius = 0px
+       components   0-1-0        components.css:2   .ui-button  { border-radius: var(--radius-md); }
+    >> (вне слоёв)  0-0-1        legacy.css:2       button  { border-radius: 0; }
+
+T1b Вторичная кнопка в #workbench — #buttons .ui-button--secondary
+  background-color = rgb(41, 57, 168)
+       components   0-1-0        components.css:5   .ui-button--secondary  { background: var(--color-surface); }
+    >> (вне слоёв)  1-1-0        legacy.css:3       #workbench .ui-button  { background: #2939a8; }
+  color = rgb(24, 35, 63)
+    >> components   0-1-0        components.css:5   .ui-button--secondary  { color: var(--color-ink); }
+
+T1c Опасная кнопка — #buttons .ui-button--danger
+  background-color = rgb(164, 30, 36)
+       components   0-1-0        components.css:7   .ui-button--danger  { background: #b42336; }
+       states       0-1-0        states.css:11      .is-danger  { background: #c12236; }
+       (вне слоёв)  1-1-0        legacy.css:3       #workbench .ui-button  { background: #2939a8; }
+    >> (вне слоёв)  1-2-0   !imp legacy.css:4       #workbench .ui-button.is-danger  { background: #a41e24 !important; }
+
+T2 Опасная метка внутри карточки — #cards .ui-tag--danger
+  background-color = rgb(193, 34, 54)
+       components   0-1-0        components.css:28  .ui-tag--danger  { background: var(--color-danger-bg); }
+    >> states       0-1-0        states.css:11      .is-danger  { background: #c12236; }
+  color = rgb(255, 255, 255)
+       components   0-1-0        components.css:28  .ui-tag--danger  { color: var(--color-danger); }
+       states       0-1-0        states.css:11      .is-danger  { color: #ffffff; }
+    >> (вне слоёв)  0-1-0        legacy.css:5       .is-danger  { color: #fff; }
+  padding-left = 16px
+       components   0-1-0        components.css:24  .ui-tag  { padding: .25rem .65rem; }
+    >> states       1-1-0        states.css:12      :is(.ui-card, #workbench) .ui-tag  { padding-inline: 1rem; }
+
+T3 Поле email до взаимодействия — #user-email
+  border-top-color = rgb(180, 35, 54)
+       components   0-1-1        components.css:12  .ui-field input  { border: 1px solid var(--color-border); }
+    >> states       0-2-2        states.css:9       .ui-field:has(input:invalid) input  { border-color: #b42336; }
+  background-color = rgb(255, 240, 242)
+       components   0-1-1        components.css:12  .ui-field input  { background: var(--color-surface); }
+    >> states       0-2-2        states.css:9       .ui-field:has(input:invalid) input  { background: #fff0f2; }
+
+T4 Текст вложенного уведомления в карточке — #cards .ui-alert p
+  font-size = 11.04px
+       components   0-1-1        components.css:21  .ui-card p  { font-size: .82rem; }
+       components   0-1-1        components.css:31  .ui-alert p  { font-size: .83rem; }
+    >> (вне слоёв)  0-1-1        legacy.css:6       .ui-card p  { font-size: .69rem; }
+  color = rgb(86, 100, 125)
+    >> components   0-1-1        components.css:21  .ui-card p  { color: var(--color-muted); }
+
+T5 Checkbox переключателя — #switch-autosave
+  display = none
+    >> components   0-1-1        components.css:44  .ui-switch input  { display: none; }
+  position = static
+
+T6 Кнопка в состоянии :focus-visible — #buttons .ui-button--secondary [focus,focus-visible]
+  outline-style = none
+       base         0-0-0        base.css:9         :where(:focus-visible)  { outline: 3px solid var(--color-focus); }
+    >> states       0-2-0        states.css:6       .ui-button:focus  { outline: none; }
+
+T7 Поле имени в состоянии :focus-visible — #user-name [focus,focus-visible]
+  outline-style = none
+       base         0-0-0        base.css:9         :where(:focus-visible)  { outline: 3px solid var(--color-focus); }
+    >> (вне слоёв)  0-0-1        legacy.css:7       input  { outline: none; }
